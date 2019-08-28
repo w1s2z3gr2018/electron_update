@@ -1,10 +1,36 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
+  "name": "demo",
+  "version": "1.0.5",
   "description": "A minimal Electron application",
+  "productName": "MyApp",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "node ./bin/clear.js && electron-builder --win --ia32"
+  },
+  "files": "dist/**/*",
+  "build": {
+    "appId": "com.xxx.app",
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://localhost:2060/zip"
+      }
+    ],
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "icon": "/icon/admin.ico",
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    }
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -17,6 +43,11 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^5.0.6"
+    "electron": "^5.0.6",
+    "electron-builder": "^21.1.0"
+  },
+  "dependencies": {
+    "del": "^5.0.0",
+    "electron-updater": "^4.1.2"
   }
 }
