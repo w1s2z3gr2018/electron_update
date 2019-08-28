@@ -1,3 +1,0 @@
-provider: generic
-url: 'http://localhost:2060/zip'
-updaterCacheDirName: demo-updater
